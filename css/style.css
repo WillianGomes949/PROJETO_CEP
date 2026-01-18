@@ -629,9 +629,6 @@ select option {
 }
 /* --- EXTERNAL TOOLS SECTION --- */
 
-#tools-section {
-  padding-bottom: 2rem;
-}
 
 .tools-grid {
   display: grid;
