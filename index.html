@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CEP Finder | Localizador</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="background-glow"></div>
+
+    <header>
+      <div class="container header-content">
+        <div class="logo">
+          <i class="fas fa-map-marked-alt"></i>
+          <h1>CEP Finder</h1>
+        </div>
+        <nav class="navbar">
+          <a href="#"><i class="fas fa-envelope"></i> Contato</a>
+          <a href="https://viacep.com.br/" target="_blank"><i class="fa-solid fa-code"></i></i> API</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="form-section">
+        <div class="glass-card">
+          <div class="tabs">
+            <button class="tab-btn active" data-target="tab-cep">
+              <i class="fas fa-search-location"></i> Tenho o CEP
+            </button>
+            <button class="tab-btn" data-target="tab-endereco">
+              <i class="fas fa-map-signs"></i> Buscar CEP
+            </button>
+          </div>
+
+          <div class="card-header">
+            <h2 id="form-title">Consulta de Endereço</h2>
+            <p>Busque e armazene localizações facilmente.</p>
+          </div>
+
+          <div id="tab-endereco" class="tab-content" style="display: none">
+            <div class="form-grid search-grid">
+              <div class="input-group">
+                <label>Estado (UF)</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-map input-icon"></i>
+                  <select id="search-uf">
+                    <option value="">UF</option>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AP">AP</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MT">MT</option>
+                    <option value="MS">MS</option>
+                    <option value="MG">MG</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PR">PR</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="SC">SC</option>
+                    <option value="SP">SP</option>
+                    <option value="SE">SE</option>
+                    <option value="TO">TO</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label>Cidade</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-city input-icon"></i>
+                  <input
+                    type="text"
+                    id="search-cidade"
+                    placeholder="Ex: Fortaleza"
+                    minlength="3"
+                  />
+                </div>
+              </div>
+
+              <div class="input-group full-width">
+                <label>Nome da Rua (Parcial)</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-road input-icon"></i>
+                  <input
+                    type="text"
+                    id="search-rua"
+                    placeholder="Ex: Domingos Olímpio"
+                    minlength="3"
+                  />
+                </div>
+                <small>Mínimo de 3 caracteres</small>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              id="btn-buscar-lista"
+              class="btn btn-primary full-btn"
+            >
+              <i class="fas fa-search"></i> Pesquisar CEPs
+            </button>
+
+            <div id="search-results-list" class="results-list"></div>
+          </div>
+
+          <form id="tab-cep" class="tab-content active">
+            <div class="form-grid">
+              <div class="input-group full-width">
+                <label for="cep">CEP</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-search input-icon"></i>
+                  <input
+                    type="tel"
+                    id="cep"
+                    placeholder="00000-000"
+                    maxlength="9"
+                  />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="logradouro">Logradouro</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-road input-icon"></i>
+                  <input
+                    type="text"
+                    id="logradouro"
+                    placeholder="Rua, Avenida..."
+                  />
+                </div>
+              </div>
+
+              <div class="input-group short">
+                <label for="numero">Número</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-hashtag input-icon"></i>
+                  <input type="tel" id="numero" placeholder="Nº" />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="cidade">Cidade</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-city input-icon"></i>
+                  <input type="text" id="cidade" placeholder="Cidade" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-primary" id="btn-salvar">
+                <i class="fas fa-save"></i> Salvar Endereço
+              </button>
+              <button type="button" class="btn btn-secondary" id="btn-limpar">
+                <i class="fas fa-broom"></i> Limpar
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="list-section">
+        <div class="section-header">
+          <h2>Endereços Salvos</h2>
+          <div class="badge">0 itens</div>
+        </div>
+        <div class="result-grid"></div>
+      </section>
+      <section id="tools-section">
+        <div class="section-header">
+          <h2>Outras Ferramentas</h2>
+        </div>
+        
+        <div class="tools-grid">
+          <a href="https://consulta-tabela-fipe-two.vercel.app/" target="_blank" class="tool-card glass-card">
+            <div class="tool-icon">
+              <i class="fas fa-car"></i>
+            </div>
+            <div class="tool-info">
+              <h3>Tabela Fipe</h3>
+              <p>Consulte preços médios de veículos.</p>
+            </div>
+            <i class="fas fa-external-link-alt arrow-icon"></i>
+          </a>
+
+          <a href="https://horarios-onibus-fortaleza.vercel.app/" target="_blank" class="tool-card glass-card">
+            <div class="tool-icon">
+              <i class="fas fa-bus"></i>
+            </div>
+            <div class="tool-info">
+              <h3>Horários de Ônibus</h3>
+              <p>Pesquise linhas em Fortaleza.</p>
+            </div>
+            <i class="fas fa-external-link-alt arrow-icon"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+    <script src="js/popup.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
